@@ -35,6 +35,8 @@
   var round_y = 0;
   var round_z = 0;
   var shakeCount = 0;
+  var gaugeColors = ['#ec80af', '#f19018', '#f4ed61', '#87c256', '#2eb5c8'];
+  var gaugeColorsIndex = 0;
 
   window.addEventListener("devicemotion", function(event) {
     var gauge = document.getElementById("gauge");
@@ -51,7 +53,18 @@
 
     if(Math.abs(round_x) > 5 || Math.abs(round_y) > 5 || Math.abs(round_z) > 5) {
       shakeCount++;
+
+      if(shakeCount > 100) {
+        shakeCount = 0;
+        gaugeColorsIndex++;
+
+        if(gaugeColorsIndex > 4) {
+          gaugeColorsIndex = 0;
+        }
+      }
+
       gauge.style.width = shakeCount + '%';
+      gauge.style.backgroundColor = gaugeColors[gaugeColorsIndex];
     }
   }, true)
 </script>
