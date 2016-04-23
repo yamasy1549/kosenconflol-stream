@@ -5,15 +5,22 @@
     transform: scale(1.2, 1.2); }
   60% {
     transform: scale(1, 1); } }
-#bar {
+.bar {
   position: fixed;
   right: 0;
   left: 0;
-  bottom: 0;
-  height: 8%;
   z-index: 999;
   background-color: white; }
 
+.top {
+  top: 0;
+  height: 8%; }
+
+.bottom {
+  bottom: 0;
+  height: 8%; }
+
+#result,
 #gauge {
   background-color: #ec80af;
   height: 100%;
@@ -24,7 +31,7 @@
   margin: auto;
   width: 30%;
   position: absolute;
-  top: 0;
+  top: 8%;
   left: 0;
   right: 0;
   bottom: 8%; }

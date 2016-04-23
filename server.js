@@ -46,9 +46,7 @@ function startStream() {
             console.log(id);
             console.log(text);
             console.log("====================");
-            // textがundefinedのときがあって落ちる
-            io.emit('msg', text.substring(0, 33));
-            // io.emit('msg', text);
+            io.emit('msg', text.substring(0, 35));
         });
         stream.on('error', function(e) {
             streaming = false;
@@ -59,7 +57,11 @@ function startStream() {
 }
 
 app.listen(process.env.PORT || 9000);
-io.on('connection', function() {
+io.on('connection', function(socket) {
+    socket.on('c2s_shake', function(data) {
+        io.sockets.emit('broadcast', data);
+    });
+
     if (!streaming) {
         startStream();
     }
