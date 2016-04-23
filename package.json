@@ -1,0 +1,17 @@
+{
+  "name": "kosenconflol-streaming",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node server",
+    "dev": "nf run node server"
+  },
+  "engine": {
+    "node": "v5.4.1",
+    "npm": "3.5.3"
+  },
+  "dependencies": {
+    "twitter": "1.2.5",
+    "socket.io": "1.4.5"
+  }
+}

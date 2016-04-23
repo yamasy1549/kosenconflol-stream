@@ -1,0 +1,71 @@
+@keyframes animpop {
+  0%, 100% {
+    transform: scale(0, 0); }
+  30% {
+    transform: scale(1.2, 1.2); }
+  60% {
+    transform: scale(1, 1); } }
+#bar {
+  position: fixed;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  height: 8%;
+  z-index: 999;
+  background-color: white; }
+
+#gauge {
+  background-color: #ec80af;
+  height: 100%;
+  width: 0%; }
+
+#logo {
+  display: block;
+  margin: auto;
+  width: 30%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 8%; }
+
+#tweets {
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0; }
+
+.lol-circle {
+  display: inline-table;
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.4; }
+  .lol-circle p {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 20px; }
+
+.pink {
+  animation: animpop 10s infinite ease-out;
+  background-color: #ec80af; }
+
+.orange {
+  animation: animpop 10s infinite ease-out;
+  background-color: #f19018; }
+
+.yellow {
+  animation: animpop 10s infinite ease-out;
+  background-color: #f4ed61; }
+
+.green {
+  animation: animpop 10s infinite ease-out;
+  background-color: #87c256; }
+
+.blue {
+  animation: animpop 10s infinite ease-out;
+  background-color: #2eb5c8; }
+
+/*# sourceMappingURL=style.css.map */

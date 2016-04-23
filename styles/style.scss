@@ -1,0 +1,99 @@
+$black: #333;
+$gray: #666;
+$lol-pink: #ec80af;
+$lol-orange: #f19018;
+$lol-yellow: #f4ed61;
+$lol-green: #87c256;
+$lol-blue: #2eb5c8;
+
+$primary-font: "Open Sans", "Noto Sans CJK JP", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+
+$fade: 0.2s ease-out;
+$movement: 0.8s ease-in-out;
+$shadow: 0 1px 10px 0 rgba($black, .1);
+$semitransparent: 0.92;
+
+@keyframes animpop {
+  0%, 100% { transform: scale(0, 0); }
+  30% { transform: scale(1.2, 1.2); }
+  60% { transform: scale(1, 1); }
+}
+
+@mixin animrandompop {
+  animation: animpop 10s infinite ease-out;
+}
+
+#bar {
+  position: fixed;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  height: 8%;
+  z-index: 999;
+  background-color: white;
+}
+
+#gauge {
+  background-color: $lol-pink;
+  height: 100%;
+  width: 0%;
+}
+
+#logo {
+  display: block;
+  margin: auto;
+  width: 30%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 8%;
+}
+
+#tweets {
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.lol-circle {
+  display: inline-table;
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.4;
+
+  p {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 20px;
+  }
+}
+
+.pink {
+  @include animrandompop;
+  background-color: $lol-pink;
+}
+
+.orange {
+  @include animrandompop;
+  background-color: $lol-orange;
+}
+
+.yellow {
+  @include animrandompop;
+  background-color: $lol-yellow;
+}
+
+.green {
+  @include animrandompop;
+  background-color: $lol-green;
+}
+
+.blue {
+  @include animrandompop;
+  background-color: $lol-blue;
+}
