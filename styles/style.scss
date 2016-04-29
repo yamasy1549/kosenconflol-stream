@@ -23,40 +23,44 @@ $semitransparent: 0.92;
   animation: animpop 10s infinite ease-out;
 }
 
-.bar {
-  position: fixed;
-  right: 0;
-  left: 0;
-  z-index: 999;
-  background-color: white;
+@keyframes animtouch {
+  0%, 100% { transform: scale(1, 1); }
+  50% { transform: scale(0.3, 0.3); }
 }
 
-.top {
-  top: 0;
-  height: 8%;
+@keyframes animrot {
+  0%, 100% { transform: rotate(0deg); }
+  40% { transform: rotate(180deg); }
+  60% { transform: rotate(0deg); }
+  80% { transform: rotate(-360deg); }
 }
 
-.bottom {
-  bottom: 0;
-  height: 8%;
+.logo-anim {
+  animation:
+  animtouch 0.5s ease-out,
+  animrot 0.5s ease-out 0.1s;
+  transform-origin: 50% 50%;
 }
 
-#result,
-#gauge {
-  background-color: $lol-pink;
-  height: 100%;
-  width: 0%;
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.6;
+  width: 200px;
+  height: 200px;
+  margin: auto;
 }
 
 #logo {
   display: block;
   margin: auto;
-  width: 30%;
+  width: 20%;
   position: absolute;
-  top: 8%;
+  top: 0;
   left: 0;
   right: 0;
-  bottom: 8%;
+  bottom: 0;
+  z-index: 1000;
 }
 
 #tweets {

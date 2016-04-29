@@ -36,16 +36,16 @@ var client = new twitter({
 });
 
 function startStream() {
-    trackName = 'android';
+    trackName = 'kosenconf';
     client.stream('statuses/filter', { track : trackName }, function(stream) {
         streaming = true;
 
         stream.on('data', function(data) {
             var text = data.text;
             var id = data.id;
-            console.log(id);
-            console.log(text);
-            console.log("====================");
+            // console.log(id);
+            // console.log(text);
+            // console.log("====================");
             io.emit('msg', text.substring(0, 35));
         });
         stream.on('error', function(e) {

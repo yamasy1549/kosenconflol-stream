@@ -6,8 +6,6 @@
 <body>
   <img id="logo" src="./images/logo.png" alt="高専カンファレンスlol">
   <div id="tweets"></div>
-  <div class="bar top"><div id="result"></div></div>
-  <div class="bar bottom"><div id="gauge"></div></div>
 </body>
 <script src="/socket.io/socket.io.js"></script>
 <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
@@ -17,6 +15,7 @@
   var gaugeColors = ['#ec80af', '#f19018', '#f4ed61', '#87c256', '#2eb5c8'];
   var gaugeColorsIndex = 0;
   var $tweets = $('#tweets');
+
   socket.on('msg', function(data) {
     var randTop = Math.floor(Math.random() * 101);
     var randLeft = Math.floor(Math.random() * 101);
@@ -30,56 +29,34 @@
       });
     $tweets.prepend($circle);
   });
+
   socket.on("broadcast", function(data) {
-    var result = document.getElementById("result");
-    var currentCount = parseFloat(result.style.width) || 0;
-    var width = currentCount + data;
-    if(width > 100) {
-      width = 0;
-      gaugeColorsIndex++;
-      if(gaugeColorsIndex > 4) {
-        gaugeColorsIndex = 0;
-      }
-    }
-    result.style.width = width + '%';
-    result.style.backgroundColor = gaugeColors[gaugeColorsIndex];
+    var randTop = Math.floor(Math.random() * 101);
+    var randLeft = Math.floor(Math.random() * 101);
+    var randColor = Math.floor(Math.random() * 5);
+    var $circle = $('<div class="lol-circle"><p>' + data + '</p></div>')
+      .addClass(colors[randColor])
+      .css({top: randTop + '%', left: randLeft + '%'})
+      .delay(10000)
+      .queue(function() {
+        $(this).remove();
+      });
+    $tweets.prepend($circle);
   });
 
-  var x = 0;
-  var y = 0;
-  var z = 0;
-  var round_x = 0;
-  var round_y = 0;
-  var round_z = 0;
-  var shakeCount = 0;
-  var gauge = document.getElementById("gauge");
+  $(document).ready(function() {
+    var $logo = $("#logo");
+        var clickEvent = (window.ontouchstart === undefined)? 'click' : 'touchstart';
+        $logo.on(clickEvent, function() {
+          // 固定コメントを入れれる。いまはなにもなし
+          socket.emit("c2s_shake", '');
+          $logo.addClass("logo-anim").promise().done(function() {
+            $logo.delay(500).promise().done(function() {
+              $logo.removeClass("logo-anim");
+            });
+          });
+        });
+  });
 
-  window.addEventListener("devicemotion", function(event) {
-
-    x = event.acceleration.x;
-    y = event.acceleration.y;
-    z = event.acceleration.z;
-
-    round_x = Math.round(x * 10) / 10;
-    round_y = Math.round(y * 10) / 10;
-    round_z = Math.round(z * 10) / 10;
-
-    if(Math.abs(round_x) > 5 || Math.abs(round_y) > 5 || Math.abs(round_z) > 5) {
-      shakeCount++;
-
-      if(shakeCount > 100) {
-        shakeCount = 0;
-        gaugeColorsIndex++;
-
-        if(gaugeColorsIndex > 4) {
-          gaugeColorsIndex = 0;
-        }
-      }
-
-      gauge.style.width = shakeCount + '%';
-      gauge.style.backgroundColor = gaugeColors[gaugeColorsIndex];
-      socket.emit("c2s_shake", 1);
-    }
-  }, true)
 </script>
 <link rel="stylesheet" href="styles/style.css">
