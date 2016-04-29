@@ -1,10 +1,10 @@
 <!doctype html>
 <head>
   <meta charset="utf-8">
-  <title>chat</title>
+  <title>高専カンファレンスlol streaming</title>
 </head>
 <body>
-  <img id="logo" src="./images/logo.png" alt="高専カンファレンスlol">
+  <img id="logo" src="./images/logo.png">
   <div id="tweets"></div>
 </body>
 <script src="/socket.io/socket.io.js"></script>
@@ -29,34 +29,5 @@
       });
     $tweets.prepend($circle);
   });
-
-  socket.on("broadcast", function(data) {
-    var randTop = Math.floor(Math.random() * 101);
-    var randLeft = Math.floor(Math.random() * 101);
-    var randColor = Math.floor(Math.random() * 5);
-    var $circle = $('<div class="lol-circle"><p>' + data + '</p></div>')
-      .addClass(colors[randColor])
-      .css({top: randTop + '%', left: randLeft + '%'})
-      .delay(10000)
-      .queue(function() {
-        $(this).remove();
-      });
-    $tweets.prepend($circle);
-  });
-
-  $(document).ready(function() {
-    var $logo = $("#logo");
-        var clickEvent = (window.ontouchstart === undefined)? 'click' : 'touchstart';
-        $logo.on(clickEvent, function() {
-          // 固定コメントを入れれる。いまはなにもなし
-          socket.emit("c2s_shake", '');
-          $logo.addClass("logo-anim").promise().done(function() {
-            $logo.delay(500).promise().done(function() {
-              $logo.removeClass("logo-anim");
-            });
-          });
-        });
-  });
-
 </script>
 <link rel="stylesheet" href="styles/style.css">

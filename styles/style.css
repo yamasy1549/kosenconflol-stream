@@ -1,3 +1,7 @@
+html,
+body {
+  font-family: "Open Sans", "Noto Sans CJK JP", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif; }
+
 @keyframes animpop {
   0%, 100% {
     transform: scale(0, 0); }
@@ -5,32 +9,6 @@
     transform: scale(1.2, 1.2); }
   60% {
     transform: scale(1, 1); } }
-@keyframes animtouch {
-  0%, 100% {
-    transform: scale(1, 1); }
-  50% {
-    transform: scale(0.3, 0.3); } }
-@keyframes animrot {
-  0%, 100% {
-    transform: rotate(0deg); }
-  40% {
-    transform: rotate(180deg); }
-  60% {
-    transform: rotate(0deg); }
-  80% {
-    transform: rotate(-360deg); } }
-.logo-anim {
-  animation: animtouch 0.5s ease-out, animrot 0.5s ease-out 0.1s;
-  transform-origin: 50% 50%; }
-
-.circle {
-  position: absolute;
-  border-radius: 50%;
-  opacity: 0.6;
-  width: 200px;
-  height: 200px;
-  margin: auto; }
-
 #logo {
   display: block;
   margin: auto;

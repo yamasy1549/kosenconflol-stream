@@ -58,10 +58,6 @@ function startStream() {
 
 app.listen(process.env.PORT || 9000);
 io.on('connection', function(socket) {
-    socket.on('c2s_shake', function(data) {
-        io.sockets.emit('broadcast', data);
-    });
-
     if (!streaming) {
         startStream();
     }
