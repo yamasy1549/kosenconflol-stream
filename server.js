@@ -43,10 +43,10 @@ function startStream() {
         stream.on('data', function(data) {
             var text = data.text;
             var id = data.id;
-            // console.log(id);
-            // console.log(text);
-            // console.log("====================");
-            io.emit('msg', text.substring(0, 35));
+            console.log(id);
+            console.log(text);
+            console.log("====================");
+            io.emit('msg', text.substring(0, 40));
         });
         stream.on('error', function(e) {
             streaming = false;
